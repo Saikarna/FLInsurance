@@ -1,0 +1,9 @@
+{
+	"name": "Insurance1",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ef83a0cb-e4e2-4f26-bbea-20ad65be4833",
+		"tenantId": "6fc14fae-ce75-470a-b98c-613932967466"
+	}
+}
