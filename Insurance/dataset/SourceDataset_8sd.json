@@ -1,0 +1,18 @@
+{
+	"name": "SourceDataset_8sd",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SourceAzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "FL_insurance_sample.csv",
+				"fileSystem": "insurance1"
+			}
+		}
+	}
+}
