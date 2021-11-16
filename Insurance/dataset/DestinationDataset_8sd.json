@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_8sd",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TargetAzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "target"
+			}
+		}
+	}
+}
