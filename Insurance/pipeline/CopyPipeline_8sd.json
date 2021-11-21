@@ -5,7 +5,14 @@
 			{
 				"name": "Copy_8sd",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -36,13 +43,195 @@
 						}
 					},
 					"sink": {
-						"type": "BinarySink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						}
+						"type": "AzureSqlSink"
 					},
 					"enableStaging": false,
-					"validateDataConsistency": false
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "policyID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "policyID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "statecode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "county",
+									"type": "String"
+								},
+								"sink": {
+									"name": "county",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "eq_site_limit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "eq_site_limit",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "hu_site_limit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "hu_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fl_site_limit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fl_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fr_site_limit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fr_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tiv_2011",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tiv_2011",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tiv_2012",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tiv_2012",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "eq_site_deductible",
+									"type": "String"
+								},
+								"sink": {
+									"name": "eq_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "hu_site_deductible",
+									"type": "String"
+								},
+								"sink": {
+									"name": "hu_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fl_site_deductible",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fl_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fr_site_deductible",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fr_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "point_latitude",
+									"type": "String"
+								},
+								"sink": {
+									"name": "point_latitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "point_longitude",
+									"type": "String"
+								},
+								"sink": {
+									"name": "point_longitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "line",
+									"type": "String"
+								},
+								"sink": {
+									"name": "line",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "construction",
+									"type": "String"
+								},
+								"sink": {
+									"name": "construction",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "point_granularity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "point_granularity",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -52,7 +241,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_8sd",
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					}
 				]
@@ -84,32 +273,6 @@
 						"type": "DelimitedTextReadSettings"
 					}
 				}
-			},
-			{
-				"name": "Python1",
-				"type": "DatabricksSparkPython",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": []
-			},
-			{
-				"name": "Notebook1",
-				"type": "DatabricksNotebook",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": []
 			}
 		],
 		"parameters": {
