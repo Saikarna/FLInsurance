@@ -1,0 +1,91 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "policyID",
+				"type": "varchar"
+			},
+			{
+				"name": "statecode",
+				"type": "varchar"
+			},
+			{
+				"name": "county",
+				"type": "varchar"
+			},
+			{
+				"name": "eq_site_limit",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "hu_site_limit",
+				"type": "varchar"
+			},
+			{
+				"name": "fl_site_limit",
+				"type": "varchar"
+			},
+			{
+				"name": "fr_site_limit",
+				"type": "varchar"
+			},
+			{
+				"name": "tiv_2011",
+				"type": "varchar"
+			},
+			{
+				"name": "tiv_2012",
+				"type": "varchar"
+			},
+			{
+				"name": "eq_site_deductible",
+				"type": "varchar"
+			},
+			{
+				"name": "hu_site_deductible",
+				"type": "varchar"
+			},
+			{
+				"name": "fl_site_deductible",
+				"type": "varchar"
+			},
+			{
+				"name": "fr_site_deductible",
+				"type": "varchar"
+			},
+			{
+				"name": "point_latitude",
+				"type": "varchar"
+			},
+			{
+				"name": "point_longitude",
+				"type": "varchar"
+			},
+			{
+				"name": "line",
+				"type": "varchar"
+			},
+			{
+				"name": "construction",
+				"type": "varchar"
+			},
+			{
+				"name": "point_granularity",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FLinsurance"
+		}
+	}
+}
