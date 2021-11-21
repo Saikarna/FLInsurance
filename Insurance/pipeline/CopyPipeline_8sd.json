@@ -3,250 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_8sd",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [
-					{
-						"name": "Source",
-						"value": "insurance1//FL_insurance_sample.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "target//"
-					}
-				],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "AzureSqlSink"
-					},
-					"enableStaging": false,
-					"validateDataConsistency": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "policyID",
-									"type": "String"
-								},
-								"sink": {
-									"name": "policyID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "statecode",
-									"type": "String"
-								},
-								"sink": {
-									"name": "statecode",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "county",
-									"type": "String"
-								},
-								"sink": {
-									"name": "county",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "eq_site_limit",
-									"type": "String"
-								},
-								"sink": {
-									"name": "eq_site_limit",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "hu_site_limit",
-									"type": "String"
-								},
-								"sink": {
-									"name": "hu_site_limit",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "fl_site_limit",
-									"type": "String"
-								},
-								"sink": {
-									"name": "fl_site_limit",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "fr_site_limit",
-									"type": "String"
-								},
-								"sink": {
-									"name": "fr_site_limit",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "tiv_2011",
-									"type": "String"
-								},
-								"sink": {
-									"name": "tiv_2011",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "tiv_2012",
-									"type": "String"
-								},
-								"sink": {
-									"name": "tiv_2012",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "eq_site_deductible",
-									"type": "String"
-								},
-								"sink": {
-									"name": "eq_site_deductible",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "hu_site_deductible",
-									"type": "String"
-								},
-								"sink": {
-									"name": "hu_site_deductible",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "fl_site_deductible",
-									"type": "String"
-								},
-								"sink": {
-									"name": "fl_site_deductible",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "fr_site_deductible",
-									"type": "String"
-								},
-								"sink": {
-									"name": "fr_site_deductible",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "point_latitude",
-									"type": "String"
-								},
-								"sink": {
-									"name": "point_latitude",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "point_longitude",
-									"type": "String"
-								},
-								"sink": {
-									"name": "point_longitude",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "line",
-									"type": "String"
-								},
-								"sink": {
-									"name": "line",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "construction",
-									"type": "String"
-								},
-								"sink": {
-									"name": "construction",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "point_granularity",
-									"type": "String"
-								},
-								"sink": {
-									"name": "point_granularity",
-									"type": "String"
-								}
-							}
-						]
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DelimitedText1",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
 				"dependsOn": [],
@@ -272,6 +28,51 @@
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
+				}
+			},
+			{
+				"name": "Power Query1",
+				"type": "ExecuteWranglingDataflow",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "powerquery1",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"queries": [
+						{
+							"queryName": "UserQuery",
+							"dataflowSinks": [
+								{
+									"name": "SinkAzureSqlTable1",
+									"dataset": {
+										"referenceName": "AzureSqlTable1",
+										"type": "DatasetReference"
+									},
+									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tcounty as string,\n\t\thigh_eq_site_limit as decimal(18,2),\n\t\t{No.of policyID} as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> SinkAzureSqlTable1"
+								}
+							]
+						}
+					]
 				}
 			}
 		],
