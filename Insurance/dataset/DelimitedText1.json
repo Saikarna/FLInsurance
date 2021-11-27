@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "FL_insurance.csv",
 				"fileSystem": "insurance1"
 			},
 			"columnDelimiter": ",",
